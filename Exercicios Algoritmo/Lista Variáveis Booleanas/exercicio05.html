@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <!-- 5. Crie um programa o qual: 
 
@@ -42,7 +44,52 @@ OBS2: A fórmula para calcular o IMC é “peso / (altura * altura)”, como:
     IMC = 70 / (1.75 * 1.75)     ->     resulta em: 22.8571428571 
 
 OBS3: Para converter centímetros em metros, divida os centímetros por 100.  -->
+
+    <h1>Informe seu peso e altura</h1>
+    <br>
+    Informe seu peso:
+    <input id="input_peso" />
+    <br>
+    Informe sua altura:
+    <input id="input_altura" />
+    <br>
+    <button onclick="calcular()">Calcular IMC</button>
+    <br>
+    <span id="span_span_resultado"></span>
 </body>
+
 </html>
+<script>
+    function calcular() {
+        var peso = input_peso.value;
+        var altura = input_altura.value;
 
+        if (altura >= 2.72) {
+            altura = altura / 100;
+        }
 
+        var imc = peso / (altura * altura);
+
+        var abaixoDoPeso = imc < 18.5;
+        var pesoIdeal = (imc >= 18.5 && imc <= 24.9);
+        var acimaDoPeso = (imc > 24.9 && imc <= 30);
+        var obesidade = (imc > 30 && imc <= 35);
+        var obesidadeMorbida = imc > 35;
+
+        if (peso.length == "" || altura.length == "") {
+            alert("Verifique se todos os campos estão preenchidos!")
+        } else {
+            if (abaixoDoPeso) {
+                span_resultado.innerHTML = `<p style="color:blue">Abaixo do Peso</p> ${imc}`;
+            } else if (pesoIdeal) {
+                span_resultado.innerHTML = `<p style="color:green">Peso Ideal</p> ${imc}`;
+            } else if (acimaDoPeso) {
+                span_resultado.innerHTML = `<p style="color:yellow">Excesso de Peso</p> ${imc}`;
+            } else if (obesidade) {
+                span_resultado.innerHTML = `<p style="color:orange">Obesidade</p> ${imc}`;
+            } else if (obesidadeMorbida) {
+                span_resultado.innerHTML = `<p style="color:red">Obesidade Extrema</p> ${imc}`;
+            }
+        }
+    }
+</script>

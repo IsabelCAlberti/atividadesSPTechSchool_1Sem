@@ -32,29 +32,36 @@ e) Se somente a senha estiver errada, exiba um alert com a frase "Entre em con
     Senha:
     <input type="text" id="ipt_senha">
 
-    <button onclick="autentificar()">Entrar</button>
+    <button onclick="validacaoUsuario()">Entrar</button>
     <div id="div_mensagem_permissao"></div>
 
 </body>
 
 </html>
 <script>
-    var login = ipt_login.value
-    var senha = ipt_senha.value
+    function validacaoUsuario() {
+        var login = ipt_login.value
+        var senha = ipt_senha.value
 
-    var verificaLogin = login == "aidimin"
-    var verificaSenha = senha == "seinha"
+        var verifica_login = login == 'aidimin';
+        var verifica_senha = senha == 'seinha';
 
-    function autentificar() {
+        var usuario_validado = verifica_senha && verifica_login;
 
-        if (!verificaSenha && verificaLogin) {
-            div_mensagem_permissao.innerHTML = "Sua senha está inválida!";
-            alert("Entre em contato com o suporte para recuperar sua senha");
-        } else if (!verificaLogin) {
-            div_mensagem_permissao.innerHTML = "Seu Login está inválido!";
+        var verifica_login_errado = login != 'aidimin';
+        var verifica_senha_errada = senha != 'seinha';
+
+        var usuario_login_errado = verifica_login_errado;
+        var usuario_senha_errada = verifica_senha_errada;
+
+
+        if (usuario_validado) {
+            div_mensagem_permissao.innerHTML = "Usuário autenticado com sucesso!";
+        } else if (verifica_login_errado) {
+            div_mensagem_permissao.innerHTML = "Seu login está inválido!";
         }
-        else if (verificaLogin && verificaSenha) {
-            div_mensagem_permissao.innerHTML = "Usuário autentificado com sucesso!";
+        else if (verifica_senha_errada) {
+            div_mensagem_permissao.innerHTML = "Sua senha está inválida!";
         }
     }
 </script>
