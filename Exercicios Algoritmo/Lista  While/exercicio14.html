@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Digite sua idade</p>
+    <input id="ipt_idade_usuario">
+    <br>
+    <button onclick="verificar_idade()">Verificar Idade</button>
+    <br>
+    <span id="span_mensagem"></span>
+
+    <!-- 14. Crie um programa que vá contando a idade do usuário e descrevendo sua fase na vida, considerando que: 
+
+    - Primeira Infância: 0 a 4 anos /    - Pré-escolar: + de 4 aos 6 anos  /     - Segunda Infância: + de 6 aos 10 anos 
+
+    - Adolescência: + de 10 aos 18 anos /     - Adulto: + de 18 até os 50 anos      - Melhor idade: + de 50 anos até 100 anos 
+
+    - Matusalém: + de 100 anos -->
+
+    <!-- Assim, sua página HTML deve solicitar a idade do usuário. Na medida que for digitando, deve aparecer uma contagem de idade e indicação de fase da vida abaixo como neste exemplo: 
+
+   0 anos (Primeira Infância) 
+
+   1 anos (Primeira Infância) 
+
+   2 anos (Primeira Infância) 
+
+   3 anos (Primeira Infância) 
+
+   4 anos (Primeira Infância) 
+
+   5 anos (Pré-escolar) 
+
+   6 anos (Pré-escolar) 
+
+   7 anos (Segunda Infância) 
+
+   .... 
+
+A última linha deve ser a idade informada.  -->
+
+</body>
+
+</html>
+<script>
+    function verificar_idade() {
+
+        var idade_usuario = Number(ipt_idade_usuario.value);
+        var primeira_infancia = (idade_usuario <= 4)
+        var pre_escolar = ((idade_usuario > 4 && idade_usuario <= 6))
+        var segunda_infancia = ((idade_usuario > 6 && idade_usuario <= 10))
+        var adolescencia = ((idade_usuario > 10 && idade_usuario <= 18));
+        var adulto = ((idade_usuario > 18 && idade_usuario <= 50));
+        var melhor_idade = ((idade_usuario > 50 && idade_usuario <= 100));
+        var matusalem = (idade_usuario > 100);
+        var cont = 1;
+        span_mensagem.innerHTML = "";
+
+        while (cont <= idade_usuario) {
+            span_mensagem.innerHTML += `${cont} anos`;
+            if (idade_usuario <= primeira_infancia) {
+                span_mensagem.innerHTML += "(Primeira Infância)" + "<br>";
+            } else if (pre_escolar) {
+                span_mensagem.innerHTML += "(Pré-Escola)" + "<br>";
+            } else if (segunda_infancia) {
+                span_mensagem.innerHTML += "(Segunda Infância)" + "<br>";
+            } else if (adolescencia) {
+                span_mensagem.innerHTML += "(Adolescência)" + "<br>";
+            } else if (adulto) {
+                span_mensagem.innerHTML += "(Adulto)" + "<br>";
+            } else if (melhor_idade) {
+                span_mensagem.innerHTML += "(Melhor Idade)" + "<br>";
+            } else if (matusalem) {
+                span_mensagem.innerHTML += "(Matusalém)"
+            }
+            cont++;
+        }
+
+    }
+</script>

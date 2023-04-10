@@ -17,20 +17,23 @@ Digite um numero:
 <input type="number" min="0" max="200" id="ipt_numero">
 
 <button onclick="multiplo_de7()">Viva o 7!</button>
+<br>
 <span id="span_vazia"></span>
 
 </body>
 </html>
 <script>
     function multiplo_de7() {
+        span_vazia.innerHTML = "";
+        
         var numero_do_usuario = Number(ipt_numero.value)
-        var numero_mult7 = 0;
+        var cont_num_mult7 = 0;
 
-        while (numero_mult7 <= numero_do_usuario) {
-            if (numero_mult7 % 7 == 0) {
-                span_vazia.innerHTML += `${numero_mult7}<br>`
+        while (cont_num_mult7 <= numero_do_usuario) {
+            if (cont_num_mult7 % 7 == 0) {
+                span_vazia.innerHTML += `${cont_num_mult7} <br>`
             }
-            numero_mult7 += 1;
+            cont_num_mult7 += 1;
         }
     }
 </script>

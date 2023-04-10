@@ -46,16 +46,17 @@ OBS2: A fórmula para calcular o IMC é “peso / (altura * altura)”, como:
 OBS3: Para converter centímetros em metros, divida os centímetros por 100.  -->
 
     <h1>Informe seu peso e altura</h1>
-    <br>
+    <br><br>
     Informe seu peso:
     <input id="input_peso" />
-    <br>
+    <br><br>
     Informe sua altura:
     <input id="input_altura" />
+    <br><br>
+    <button style="border: none; padding: 5px; background-color: aquamarine ;" onclick="calcular()">Calcular
+        IMC</button>
     <br>
-    <button onclick="calcular()">Calcular IMC</button>
-    <br>
-    <span id="span_span_resultado"></span>
+    <span id="span_resultado"></span>
 </body>
 
 </html>
@@ -64,31 +65,30 @@ OBS3: Para converter centímetros em metros, divida os centímetros por 100.  --
         var peso = input_peso.value;
         var altura = input_altura.value;
 
-        if (altura >= 2.72) {
-            altura = altura / 100;
-        }
-
         var imc = peso / (altura * altura);
 
         var abaixoDoPeso = imc < 18.5;
-        var pesoIdeal = (imc >= 18.5 && imc <= 24.9);
-        var acimaDoPeso = (imc > 24.9 && imc <= 30);
-        var obesidade = (imc > 30 && imc <= 35);
+        var pesoIdeal = imc <= 24.9;
+        var acimaDoPeso =  imc <= 30;
+        var obesidade = imc <= 35;
         var obesidadeMorbida = imc > 35;
 
         if (peso.length == "" || altura.length == "") {
             alert("Verifique se todos os campos estão preenchidos!")
         } else {
-            if (abaixoDoPeso) {
-                span_resultado.innerHTML = `<p style="color:blue">Abaixo do Peso</p> ${imc}`;
+            if (altura > 2.72) {     // humano mais alto ja registrado!
+                altura /= 100;
+            }
+            else if (abaixoDoPeso) {
+                span_resultado.innerHTML = `<p style="color:blue"><strong>Abaixo do Peso</strong></p> ${imc.toFixed(2)}`;
             } else if (pesoIdeal) {
-                span_resultado.innerHTML = `<p style="color:green">Peso Ideal</p> ${imc}`;
+                span_resultado.innerHTML = `<p style="color:green"><strong>Peso Ideal</strong></p> ${imc.toFixed(2)}`;
             } else if (acimaDoPeso) {
-                span_resultado.innerHTML = `<p style="color:yellow">Excesso de Peso</p> ${imc}`;
+                span_resultado.innerHTML = `<p style="color:yellow"><strong>Excesso de Peso</strong></p> ${imc.toFixed(2)}`;
             } else if (obesidade) {
-                span_resultado.innerHTML = `<p style="color:orange">Obesidade</p> ${imc}`;
+                span_resultado.innerHTML = `<p style="color:orange"><strong>Obesidade</strong></p> ${imc.toFixed(2)}`;
             } else if (obesidadeMorbida) {
-                span_resultado.innerHTML = `<p style="color:red">Obesidade Extrema</p> ${imc}`;
+                span_resultado.innerHTML = `<p style="color:red"><strong>Obesidade Extrema</strong></p> ${imc.toFixed(2)}`;
             }
         }
     }
