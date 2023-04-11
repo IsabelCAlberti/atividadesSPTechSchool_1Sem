@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Exercicio 13 - Lista while</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -36,13 +37,13 @@ b) Ao clicar em "Exibir rotina mensal", mostre uma sequência de 30 frases, co
 O Dia 1 sempre é de "Musculação" 
 
 Considere que, nesse exemplo, o usuário informou 3 no item a)  -->
-
-    <p><b>De quantos em quantos dias faz musculação</b></p>
-    <input id="ipt_num_dias">
-
-    <button onclick="exibir_rotina()">Exibir rotina mensal</button>
-    <br>
-    <br>
+    <div class="container">
+        <p><b>De quantos em quantos dias faz musculação: </b></p>
+        <input id="ipt_num_dias">
+        <button onclick="exibir_rotina()">Exibir rotina mensal</button>
+        <br>
+        <br>
+    </div>
     <div id="div_mensagem_rotina"></div>
 
 </body>
@@ -57,14 +58,14 @@ Considere que, nesse exemplo, o usuário informou 3 no item a)  -->
         div_mensagem_rotina.innerHTML = "";
         var cont = 1;
         var cont_musculacao = Number(ipt_num_dias.value);
-        var rotina= Number(ipt_num_dias.value);
+        var rotina = Number(ipt_num_dias.value);
 
         while (cont <= 30) {
             if (cont == cont_musculacao) {
                 div_mensagem_rotina.innerHTML += ` DIA ${cont} ${mgs01} <br>`
                 console.log(cont_musculacao)
                 cont_musculacao += rotina;
-            } else if(cont != cont_musculacao){
+            } else if (cont != cont_musculacao) {
                 div_mensagem_rotina.innerHTML += `DIA ${cont} ${mgs02} <br>`
             }
             cont++;

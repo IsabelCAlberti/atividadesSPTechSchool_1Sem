@@ -10,9 +10,9 @@
 
 <body>
     <p>Digite sua idade</p>
-    <input id="ipt_idade_usuario">
+    <input id="ipt_idade_usuario" onkeyup="verificar_idade()">
     <br>
-    <button onclick="verificar_idade()">Verificar Idade</button>
+    <!-- <button onclick="verificar_idade()">Verificar Idade</button> -->
     <br>
     <span id="span_mensagem"></span>
 
@@ -20,7 +20,7 @@
 
     - Primeira Infância: 0 a 4 anos /    - Pré-escolar: + de 4 aos 6 anos  /     - Segunda Infância: + de 6 aos 10 anos 
 
-    - Adolescência: + de 10 aos 18 anos /     - Adulto: + de 18 até os 50 anos      - Melhor idade: + de 50 anos até 100 anos 
+    - Adolescência: + de 10 aos 18 anos /    - Adulto: + de 18 até os 50 anos      - Melhor idade: + de 50 anos até 100 anos 
 
     - Matusalém: + de 100 anos -->
 
@@ -51,37 +51,37 @@ A última linha deve ser a idade informada.  -->
 </html>
 <script>
     function verificar_idade() {
-
         var idade_usuario = Number(ipt_idade_usuario.value);
-        var primeira_infancia = (idade_usuario <= 4)
-        var pre_escolar = ((idade_usuario > 4 && idade_usuario <= 6))
-        var segunda_infancia = ((idade_usuario > 6 && idade_usuario <= 10))
-        var adolescencia = ((idade_usuario > 10 && idade_usuario <= 18));
-        var adulto = ((idade_usuario > 18 && idade_usuario <= 50));
-        var melhor_idade = ((idade_usuario > 50 && idade_usuario <= 100));
-        var matusalem = (idade_usuario > 100);
         var cont = 1;
         span_mensagem.innerHTML = "";
-
+        
         while (cont <= idade_usuario) {
+            var primeira_infancia = (cont <= 4)
+            var pre_escolar = ((cont > 4 && cont <= 6))
+            var segunda_infancia = ((cont > 6 && cont <= 10))
+            var adolescencia = ((cont > 10 && cont <= 18));
+            var adulto = ((cont > 18 && cont <= 50));
+            var melhor_idade = ((cont > 50 && cont <= 100));
+            var matusalem = (cont > 100);
             span_mensagem.innerHTML += `${cont} anos`;
-            if (idade_usuario <= primeira_infancia) {
-                span_mensagem.innerHTML += "(Primeira Infância)" + "<br>";
+
+            if (primeira_infancia) {
+                span_mensagem.innerHTML += `<span style="color: red;">\n(Primeira Infância)</span><br>`;
             } else if (pre_escolar) {
-                span_mensagem.innerHTML += "(Pré-Escola)" + "<br>";
+                span_mensagem.innerHTML += `<span style="color:green;">\n(Pré-Escola)</span> <br>`;
             } else if (segunda_infancia) {
-                span_mensagem.innerHTML += "(Segunda Infância)" + "<br>";
+                span_mensagem.innerHTML += `<span style="color:blue;">\n(Segunda Infância)</span><br>`;
             } else if (adolescencia) {
-                span_mensagem.innerHTML += "(Adolescência)" + "<br>";
+                span_mensagem.innerHTML += `<span style="color:brown;">\n(Adolescência)</span><br>`;
             } else if (adulto) {
-                span_mensagem.innerHTML += "(Adulto)" + "<br>";
+                span_mensagem.innerHTML += `<span style="color:yellow;">\n(Adulto)</span><br>`;
             } else if (melhor_idade) {
-                span_mensagem.innerHTML += "(Melhor Idade)" + "<br>";
+                span_mensagem.innerHTML += `<span style="color:purple;">\n(Melhor Idade)</span><br>`;
             } else if (matusalem) {
-                span_mensagem.innerHTML += "(Matusalém)"
+                span_mensagem.innerHTML += `<span style="color:pink;">\n(Matusalém)</span><br>`;
             }
             cont++;
         }
-
+        span_mensagem.innerHTML += `<br> Sua idade é ${idade_usuario}`
     }
 </script>
