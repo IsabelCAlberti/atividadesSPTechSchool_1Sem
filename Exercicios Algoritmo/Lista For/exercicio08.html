@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Exercício 21 - Lista For</title>
 </head>
+
 <body>
     <!-- 21. Refaça o programa anterior de tal forma que, a cada 3 depósitos o banco dê um bônus de 1% sobre o valor acumulado após o depósito. Ex: 
 
@@ -22,5 +24,35 @@
     Total guardado: R$3045.15 
 
 Note que nos meses 3 e 6, o valor aumentou em 1% do total após o depósito.  -->
+    Quantos depósitos fez no banco?
+    <br>
+    <input id="ipt_deposito">
+    <br>
+    Qual valor do depósito?
+    <br>
+    <input id="ipt_valor_deposito">
+    <br>
+    <br>
+    <button onclick="valor_mesAmes()">Acompanhar grana</button>
+    <br>
+    <span id="valor_mensagem"></span>
 </body>
+
 </html>
+<script>
+    function valor_mesAmes() {
+        var qtd_depositos = Number(ipt_deposito.value);
+        var valor_deposito_inicial = Number(ipt_valor_deposito.value);
+        var valor_deposito = Number(ipt_valor_deposito.value);
+
+        for (var mes = 1; mes <= qtd_depositos; mes++) {
+            if (mes % 3 == 0) {
+                valor_deposito += (1 * valor_deposito) / 100
+                console.log(valor_deposito)
+                console.log(mes)
+            }
+            valor_mensagem.innerHTML += `${mes}º Mês: ${valor_deposito}<br>`;
+            valor_deposito = valor_deposito + valor_deposito_inicial;
+        }
+    }
+</script>
