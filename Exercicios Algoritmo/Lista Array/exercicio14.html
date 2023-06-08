@@ -49,19 +49,26 @@ O preço de venda é sempre o valor da compra mais 25%. Ou seja, basta multiplic
         var nomeProduto = iptNomeProduto.value
         var precoProduto = iptPrecoProduto.value
 
-        listaProduto.push(nomeProduto)
-        listaPrecoProduto.push(precoProduto)
+        iptNomeProduto.value = ""
+        iptPrecoProduto.value = ""
 
-        console.log("lista produto", listaProduto, "lista Preço", listaPrecoProduto)
+        listaProduto.push(nomeProduto);
+        listaPrecoProduto.push(precoProduto);
+
+        var mensagem = `Total de Produtos: ${listaProduto.length} <br>`;
+
+        console.log("lista produto", listaProduto, "lista Preço", listaPrecoProduto);
 
         for (var index = 0; index < listaProduto.length; index++) {
-            for (var contPreco = 0; contPreco < listaPrecoProduto.lengt; contPreco++) {
-                var listaPrecoAtual = listaPrecoProduto[contPreco];
-               // precoCompraFinal += (listaPrecoAtual[contPreco] * 1.25)
-            }
-            var listaAtualProduto = listaProduto[index];
+            var produto = listaProduto[index];
+            var preco = Number(listaPrecoProduto[index]);
+
+            mensagem +=     `Produto ${index + 1}: ${produto} <br> 
+                             Preço de Compra: ${preco}. <br>
+                             Vender por: ${preco * 1.25}<br><br>`;
         }
-        spanMensagem.innerHTML += `Total de Produtos: ${listaProduto.length} <br> Produto ${index}: ${listaAtualProduto} <br> Preço de Compra: ${listaPrecoAtual} <br> Vender por: <br><br>`
+
+        spanMensagem.innerHTML = mensagem;
     }
 
 
